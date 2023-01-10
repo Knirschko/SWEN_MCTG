@@ -28,13 +28,12 @@ public class BattleLogicHandler {
             logger.log("Both players have drawn their cards");
             logger.log(userCard.getName() + " vs. " + opponentCard.getName());
             Card loser = checkSpeciallity(userCard, opponentCard);
-            //if looser isn't clear because of speciality actual battle is fought
+            // if a winner cant be decided with the card speciality, a normal fight triggers
             if(loser == null && (rounds % 10 == 0)) loser = luckyRound(userCard, opponentCard);
             else if(loser == null) loser = battleCards(userCard, opponentCard);
-            //if loser still null battle was a draw if ot there is a winner and a looser
             if (loser != null) {
                 if (loser == userCard) {
-                    //user lost -> opponent gets the card
+                    // if user lost the opponent gets the card
                     logger.log(username + " lost");
                     userCards.remove(userCard);
                     opponentCards.add(userCard);
@@ -53,7 +52,7 @@ public class BattleLogicHandler {
                 }
             }
             if (loser == null) logger.log("This round was a draw.");
-            //if round was draw
+            // if there is no looser, the fight was a draw
             opponentELO = calculateELO(opponentELO, userELO, 0.5);
             userELO = calculateELO(userELO, userELO, 0.5);
             if (userCards.isEmpty() || opponentCards.isEmpty()) break;
@@ -64,7 +63,7 @@ public class BattleLogicHandler {
     }
 
     private Card luckyRound(Card card1, Card card2) {
-        //every tenth round a lucky one is randomly chosen that may attack with their own + the others strength
+        // every 10th round is a special event, one player is randomly chosen, his card gets additionaly the opponents damage 
         int random = (int) (Math.floor(Math.random() * 2));
         double oldDamageCard1 = card1.getDamage();
         double oldDamageCard2 = card2.getDamage();
@@ -73,7 +72,7 @@ public class BattleLogicHandler {
             case 1 -> card2.setDamage(card2.getDamage() + card1.getDamage());
         }
         Card loser = battleCards(card1, card2);
-        //afterwars damage is reset to normal
+        // after the round damage is back to normal
         card1.setDamage(oldDamageCard1);
         card2.setDamage(oldDamageCard2);
         return loser;
@@ -91,7 +90,6 @@ public class BattleLogicHandler {
     }
 
     public Card battleCards(Card user, Card opponent) {
-        //only if spell is involved elements matter
         if(user.getName().toLowerCase().contains("spell") || opponent.getName().toLowerCase().contains("spell")) {
             if(Objects.equals(user.getElement(), "fire") && Objects.equals(opponent.getElement(), "water")) {
                 logger.log("water beat fire");
@@ -124,7 +122,6 @@ public class BattleLogicHandler {
                 user.setDamage(user.getDamage() * 2);
             }
         }
-        //return card that looses
         if(user.getDamage() > opponent.getDamage()) return opponent;
         if(opponent.getDamage() > user.getDamage()) return user;
         return null;

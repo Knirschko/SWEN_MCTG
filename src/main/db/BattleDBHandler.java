@@ -98,7 +98,7 @@ public class BattleDBHandler {
         """);
             preparedStatement.setBoolean(1, true);
             ResultSet result = preparedStatement.executeQuery();
-            //return first found possible player
+            // returns first found possible player
             if(result.next()) {
                 resultString = result.getString(1);
             }

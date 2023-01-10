@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class BattleLogicHandlerTest {
     BattleLogicHandler logicHandler = new BattleLogicHandler();
 
-
     @Test
     void battleCardsWithSpell() {
         Card card1 = new Monstercard("1", "WaterGoblin", 10.0, "water");

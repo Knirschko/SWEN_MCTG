@@ -9,7 +9,6 @@ import java.util.Objects;
 public class TradingsHandler {
     TradingsDBHandler db = new TradingsDBHandler();
 
-
     public String checkTradingDeals() {
         return db.selectAllTradings();
     }

@@ -28,7 +28,6 @@ public class RequestHandlerImpl implements Runnable{
             requestBuilder.append(line).append("\r\n");
         }
 
-        //handle request
         String request = requestBuilder.toString();
         String[] requestsLines = request.split("\r\n");
         String[] requestLine = requestsLines[0].split(" ");
@@ -37,20 +36,16 @@ public class RequestHandlerImpl implements Runnable{
         String version = requestLine[2];
         String host = requestsLines[1].split(" ")[1];
 
-        //read header
         String username = "";
         List<String> headers = new ArrayList<>(Arrays.asList(requestsLines).subList(2, requestsLines.length));
         if (headers.toString().toLowerCase().contains("authorization")) {
-            //substract username
             username = headers.toString().split("Basic ")[1].split("-")[0];
         }
 
-        //get body length
         String body = "";
         if(headers.toString().contains("Content-Length")) {
             String bodyLength = headers.toString().split("Content-Length: ")[1].split("]")[0];
             if(Integer.parseInt(bodyLength) != 0) {
-                //read body only if not null
                 int contentLength = headers.size();
                 StringBuilder bodyBuilder = new StringBuilder(10000);
                 char[] buf = new char[1024];
@@ -66,8 +61,6 @@ public class RequestHandlerImpl implements Runnable{
             }
         }
 
-
-        //convert body to JSON
         JsonNode node = null;
         ObjectMapper mapper = new ObjectMapper();
         if(!body.equals("")) {
@@ -76,10 +69,8 @@ public class RequestHandlerImpl implements Runnable{
 
         MethodManager_Impl manager = new MethodManager_Impl();
         StringBuilder message = new StringBuilder();
-        //call directive handler
         String reply = manager.handleDirective(method, path, node, username);
 
-        //write out response
         message.append(version).append(" ").append("200").append(" ").append("OK").append("\r\n");
         message.append("Host: ").append(host).append("\r\n");
         message.append("Content-type: ").append("application/json").append("\r\n");
@@ -88,8 +79,6 @@ public class RequestHandlerImpl implements Runnable{
         writer.write(message.toString());
         writer.flush();
         writer.close();
-
-
 
         System.out.println("----------------------\nClient "+ socket.toString() +"\nmethod "+ method +"\npath "+ path +"\nversion "+ version+ "\nhost "+ host +"\nheaders "+ headers.toString() +"\ndata: " + body);
         socket.close();
@@ -105,5 +94,3 @@ public class RequestHandlerImpl implements Runnable{
 
     }
 }
-
-

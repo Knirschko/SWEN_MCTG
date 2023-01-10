@@ -54,7 +54,7 @@ public class MethodManager_Impl implements DirectiveManager {
                 }
                 else return "{\"code\": \"401\", \"message\": \"only admin is authorized to create packages\"}";
             }
-            case "/transactions/packages"-> this.returnValue = packageHandler.aquirePackgae(body, username, 5);
+            case "/transactions/packages"-> this.returnValue = packageHandler.acquirePackage(body, username, 5);
             case "/tradings"-> this.returnValue = tradingHandler.createTradingDeal(body);
             case "/tradings/" -> this.returnValue = tradingHandler.trade(body, tradingId, username);
             case "/battles"-> this.returnValue = battle.battle(username);

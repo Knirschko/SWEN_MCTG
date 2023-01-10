@@ -25,7 +25,7 @@ public class BattleHandler {
         db.updateUserStats(username, newWon, newLost, elo, ratio);
     }
 
-    public String ckeckOpponent() {
+    public String checkOpponent() {
         return db.getOpponent();
     }
 

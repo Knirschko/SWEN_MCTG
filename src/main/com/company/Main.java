@@ -11,7 +11,6 @@ public class Main {
     public static void main(String[] args) {
 
         try (ServerSocket serverSocket = new ServerSocket(10001)) {
-
             while (true) {
                 Socket client = serverSocket.accept();
                 RequestHandlerImpl server = new RequestHandlerImpl(client);
@@ -20,9 +19,6 @@ public class Main {
             }
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
-
-

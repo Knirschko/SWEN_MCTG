@@ -7,8 +7,7 @@ public class Battle {
 
     public String battle(String username) {
         battleHandler.updateGameStatus(username, true);
-        //sleep
-        String opponent = battleHandler.ckeckOpponent();
+        String opponent = battleHandler.checkOpponent();
         if(Objects.equals(opponent, "")) return "{\"code\": \"400\", \"message\": \"no opponent found\"}";
         battleHandler.updateGameStatus(username, false);
         battleHandler.updateGameStatus(opponent, false);
