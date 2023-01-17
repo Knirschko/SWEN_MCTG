@@ -28,5 +28,4 @@ public class BattleHandler {
     public String checkOpponent() {
         return db.getOpponent();
     }
-
 }

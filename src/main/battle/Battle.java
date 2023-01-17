@@ -14,6 +14,4 @@ public class Battle {
         logicHandler.battleLogic(username, opponent);
         return "{\"code\": \"200\", \"message\": \"" + BattleLogger.logger.getLog() + "\"}";
     }
-
-
 }

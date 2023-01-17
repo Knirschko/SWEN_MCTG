@@ -63,7 +63,7 @@ public class BattleLogicHandler {
     }
 
     private Card luckyRound(Card card1, Card card2) {
-        // every 10th round is a special event, one player is randomly chosen, his card gets additionaly the opponents damage 
+        // every 10th round is a special event, one player is randomly chosen, his card gets additionally the opponents damage
         int random = (int) (Math.floor(Math.random() * 2));
         double oldDamageCard1 = card1.getDamage();
         double oldDamageCard2 = card2.getDamage();

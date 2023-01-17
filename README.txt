@@ -14,7 +14,8 @@
 Die Applikation ist im Kern ein Multithread REST Server. Für meine postgres Datenbank nutze einen Docker Container.
 
 ## Herangehensweise
-Ganz am Anfang wollte ich mit dem groben Umfeld anfangen, hab dann aber schnell gemerkt, dass wir noch später lernen, die wir brauchen um das Projekt überhaupt umzusetzen oder zumindest leichter zu machen.
+Nachdem ich wenig bis keine Erfahrung mit Java vor diesem Projekt gemacht habe, hatte ich anfangs eher gedacht, dass es dem objektorientierten C++ mehr ähnelt und wollte das Projekt auch so angehen.
+Ich habe aber im Laufe des Semesters gemerkt, dass, zumindest in der Art, wie wir es verwenden, dieser Ansatz doch ein falscher war.
 Darum hab ich mit dem Server angefangen, als es möglich war. Gleichzeitig hab ich mich um die Datenbank gekümmert, und hab hier immer parallel Schritt für Schritt gearbeitet.
 Außerdem hab ich immer versucht zu beachten, dass man das Projekt theoretisch leicht erweitern kann (neue Klassen, Pfade).
 Mit einigen Problemen hatte ich bereits gerechnet, manche davon waren kritischer als vermutet, jedoch war ich auch teilweise überrascht, dass Manches recht schnell und einfach funktioniert hat.

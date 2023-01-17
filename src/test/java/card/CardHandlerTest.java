@@ -13,9 +13,9 @@ class CardHandlerTest {
 
     @Test
     void getOwnerFromCardBeforeChange() throws IOException {
-        String carddata = "{\"Id\":\"testCardId2\", \"Name\":\"WaterGoblin\", \"Damage\": 20.0}";
+        String cardData = "{\"Id\":\"testCardId2\", \"Name\":\"WaterGoblin\", \"Damage\": 20.0}";
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.readTree(carddata);
+        JsonNode node = mapper.readTree(cardData);
         cardHandler.createCard(node, -1, "testUser2", false);
         assertEquals("testUser2", cardHandler.getOwnerFromCard("testCardId2"));
     }

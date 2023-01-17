@@ -31,14 +31,14 @@ class BattleLogicHandlerTest {
     }
 
     @Test
-    void checkSpeciallityWithMatch() {
+    void checkSpecialityWithMatch() {
         Card card1 = new Monstercard("1", "Dragon", 10.0, "regular");
         Card card2 = new Spellcard("2", "FireElv", 5.0, "fire");
         assertEquals(card1, logicHandler.checkSpeciallity(card1, card2));
     }
 
     @Test
-    void checkSpeciallityWithoutMatch() {
+    void checkSpecialityWithoutMatch() {
         Card card1 = new Monstercard("1", "Kraken", 10.0, "regular");
         Card card2 = new Spellcard("2", "FireElv", 20.0, "fire");
         assertNull(logicHandler.checkSpeciallity(card1, card2));
